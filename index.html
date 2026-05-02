@@ -4,12 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Happy Birthday, Spider-Hero</title>
+
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --bg1: #070711;
@@ -25,32 +22,20 @@
     }
 
     body.theme-miles {
-      --bg1: #050512;
-      --bg2: #251046;
-      --card: rgba(120, 70, 255, 0.14);
-      --accent: #ff2d55;
-      --accent2: #7a5cff;
-      --accent3: #00e5ff;
+      --bg1: #050512; --bg2: #251046; --card: rgba(120, 70, 255, 0.14);
+      --accent: #ff2d55; --accent2: #7a5cff; --accent3: #00e5ff;
       --shadow: rgba(0, 229, 255, 0.35);
     }
 
     body.theme-classic {
-      --bg1: #05091f;
-      --bg2: #350606;
-      --card: rgba(255, 255, 255, 0.11);
-      --accent: #ff1e2d;
-      --accent2: #1677ff;
-      --accent3: #ffffff;
+      --bg1: #05091f; --bg2: #350606; --card: rgba(255,255,255,.11);
+      --accent: #ff1e2d; --accent2: #1677ff; --accent3: #ffffff;
       --shadow: rgba(255, 30, 45, 0.35);
     }
 
     body.theme-stealth {
-      --bg1: #020204;
-      --bg2: #111827;
-      --card: rgba(255, 255, 255, 0.06);
-      --accent: #c084fc;
-      --accent2: #38bdf8;
-      --accent3: #e5e7eb;
+      --bg1: #020204; --bg2: #111827; --card: rgba(255,255,255,.06);
+      --accent: #c084fc; --accent2: #38bdf8; --accent3: #e5e7eb;
       --shadow: rgba(192, 132, 252, 0.28);
     }
 
@@ -63,7 +48,6 @@
         radial-gradient(circle at 20% 20%, var(--accent2), transparent 24%),
         radial-gradient(circle at 80% 0%, var(--accent), transparent 22%),
         linear-gradient(135deg, var(--bg1), var(--bg2));
-      transition: background 0.8s ease;
     }
 
     body::before {
@@ -80,416 +64,121 @@
       z-index: 0;
     }
 
-    @keyframes gridMove {
-      from { transform: translateY(0); }
-      to { transform: translateY(38px); }
-    }
+    @keyframes gridMove { from { transform: translateY(0); } to { transform: translateY(38px); } }
 
     .city {
-      position: fixed;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 170px;
-      pointer-events: none;
-      z-index: 1;
-      opacity: 0.7;
+      position: fixed; left: 0; right: 0; bottom: 0; height: 170px;
+      pointer-events: none; z-index: 1; opacity: 0.7;
       background: linear-gradient(to top, rgba(0,0,0,.86), transparent);
     }
 
     .city::before {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 120px;
-      background:
-        linear-gradient(to top, #030306 0 100%),
-        linear-gradient(to top, #030306 0 100%);
+      content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 120px;
+      background: #030306;
       clip-path: polygon(0 100%,0 45%,5% 45%,5% 25%,10% 25%,10% 60%,16% 60%,16% 35%,21% 35%,21% 10%,27% 10%,27% 58%,33% 58%,33% 30%,40% 30%,40% 52%,45% 52%,45% 20%,52% 20%,52% 66%,60% 66%,60% 38%,67% 38%,67% 18%,74% 18%,74% 55%,79% 55%,79% 32%,85% 32%,85% 48%,91% 48%,91% 22%,97% 22%,97% 63%,100% 63%,100% 100%);
     }
 
     .web-corner {
-      position: fixed;
-      width: 190px;
-      height: 190px;
-      top: -20px;
-      right: -20px;
-      opacity: 0.22;
-      border-radius: 50%;
-      background: repeating-radial-gradient(circle, transparent 0 20px, white 21px 22px),
-                  repeating-conic-gradient(from 0deg, transparent 0 18deg, white 19deg 20deg);
-      z-index: 1;
-      pointer-events: none;
+      position: fixed; width: 190px; height: 190px; top: -20px; right: -20px;
+      opacity: 0.22; border-radius: 50%;
+      background: repeating-radial-gradient(circle, transparent 0 20px, white 21px 22px), repeating-conic-gradient(from 0deg, transparent 0 18deg, white 19deg 20deg);
+      z-index: 1; pointer-events: none;
     }
 
-    .container {
-      position: relative;
-      z-index: 2;
-      width: min(1050px, 92%);
-      margin: 0 auto;
-      padding: 34px 0 90px;
-    }
-
-    .page {
-      display: none;
-      min-height: 84vh;
-      align-items: center;
-      justify-content: center;
-      animation: pageIn 0.55s ease;
-    }
-
-    .page.active {
-      display: flex;
-    }
-
-    @keyframes pageIn {
-      from { opacity: 0; transform: translateY(18px) scale(.98); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
-    }
+    .container { position: relative; z-index: 2; width: min(1050px, 92%); margin: 0 auto; padding: 34px 0 90px; }
+    .page { display: none; min-height: 84vh; align-items: center; justify-content: center; animation: pageIn .55s ease; }
+    .page.active { display: flex; }
+    @keyframes pageIn { from { opacity: 0; transform: translateY(18px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
 
     .card {
-      width: 100%;
-      max-width: 850px;
-      padding: 32px;
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      background: var(--card);
-      backdrop-filter: blur(18px);
+      width: 100%; max-width: 850px; padding: 32px; border: 1px solid var(--border);
+      border-radius: 28px; background: var(--card); backdrop-filter: blur(18px);
       box-shadow: 0 22px 70px rgba(0,0,0,.35), 0 0 35px var(--shadow);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+      text-align: center; position: relative; overflow: hidden;
     }
 
-    .card::after {
-      content: "";
-      position: absolute;
-      inset: -2px;
-      pointer-events: none;
-      opacity: .35;
-      background: linear-gradient(120deg, transparent, rgba(255,255,255,.18), transparent);
-      transform: translateX(-100%);
-      animation: shine 5s infinite;
-    }
+    .badge { display: inline-block; padding: 8px 14px; border-radius: 999px; background: rgba(255,255,255,.12); border: 1px solid var(--border); color: var(--muted); margin-bottom: 16px; font-size: .92rem; }
+    h1 { font-size: clamp(2.3rem, 7vw, 5.6rem); line-height: .96; margin-bottom: 18px; letter-spacing: -2px; text-shadow: 0 0 22px var(--shadow); }
+    h2 { font-size: clamp(1.7rem, 4vw, 3rem); margin-bottom: 14px; }
+    p { color: var(--muted); font-size: 1.08rem; line-height: 1.7; margin: 0 auto 18px; max-width: 680px; }
 
-    @keyframes shine {
-      0%, 55% { transform: translateX(-100%); }
-      75%, 100% { transform: translateX(100%); }
-    }
+    .glitch:hover { animation: glitchShake .25s infinite; }
+    @keyframes glitchShake { 0% { transform: translate(0); } 25% { transform: translate(2px,-1px); } 50% { transform: translate(-2px,1px); } 75% { transform: translate(1px,2px); } 100% { transform: translate(0); } }
 
-    .badge {
-      display: inline-block;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.12);
-      border: 1px solid var(--border);
-      color: var(--muted);
-      margin-bottom: 16px;
-      font-size: 0.92rem;
-    }
-
-    h1 {
-      font-size: clamp(2.3rem, 7vw, 5.6rem);
-      line-height: .96;
-      margin-bottom: 18px;
-      letter-spacing: -2px;
-      text-shadow: 0 0 22px var(--shadow);
-    }
-
-    h2 {
-      font-size: clamp(1.7rem, 4vw, 3rem);
-      margin-bottom: 14px;
-    }
-
-    p {
-      color: var(--muted);
-      font-size: 1.08rem;
-      line-height: 1.7;
-      margin: 0 auto 18px;
-      max-width: 680px;
-    }
-
-    .glitch {
-      position: relative;
-      display: inline-block;
-    }
-
-    .glitch:hover {
-      animation: glitchShake .25s infinite;
-    }
-
-    @keyframes glitchShake {
-      0% { transform: translate(0); }
-      25% { transform: translate(2px, -1px); }
-      50% { transform: translate(-2px, 1px); }
-      75% { transform: translate(1px, 2px); }
-      100% { transform: translate(0); }
-    }
-
-    .btn-row, .choice-grid, .mission-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 14px;
-      margin-top: 24px;
-    }
-
-    button, .choice, .mission {
-      border: 0;
-      cursor: pointer;
-      font-family: inherit;
-      color: var(--text);
-    }
+    .btn-row, .choice-grid, .mission-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 24px; }
+    button, .choice, .mission { border: 0; cursor: pointer; font-family: inherit; color: var(--text); }
 
     .btn {
-      padding: 14px 22px;
-      border-radius: 999px;
+      padding: 14px 22px; border-radius: 999px;
       background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 0 24px var(--shadow);
-      font-weight: 800;
-      letter-spacing: .3px;
+      box-shadow: 0 0 24px var(--shadow); font-weight: 800; letter-spacing: .3px;
       transition: transform .2s ease, box-shadow .2s ease;
     }
 
-    .btn:hover {
-      transform: translateY(-4px) scale(1.03);
-      box-shadow: 0 0 34px var(--shadow);
-    }
+    .btn:hover { transform: translateY(-4px) scale(1.03); box-shadow: 0 0 34px var(--shadow); }
+    .btn.secondary { background: rgba(255,255,255,.12); border: 1px solid var(--border); }
 
-    .btn.secondary {
-      background: rgba(255,255,255,.12);
-      border: 1px solid var(--border);
-    }
-
-    .choice-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(180px, 1fr));
-      gap: 18px;
-    }
-
+    .choice-grid { display: grid; grid-template-columns: repeat(3, minmax(180px, 1fr)); gap: 18px; }
     .choice, .mission {
-      min-height: 230px;
-      padding: 22px;
-      border-radius: 24px;
-      background: rgba(255,255,255,.09);
-      border: 1px solid var(--border);
-      position: relative;
-      overflow: hidden;
+      min-height: 220px; padding: 22px; border-radius: 24px; background: rgba(255,255,255,.09);
+      border: 1px solid var(--border); position: relative; overflow: hidden;
       transition: transform .25s ease, border .25s ease, box-shadow .25s ease;
     }
 
-    .choice:hover, .mission:hover {
-      transform: translateY(-8px) rotate(-1deg);
-      border-color: rgba(255,255,255,.42);
-      box-shadow: 0 0 28px var(--shadow);
-    }
-
-    .suit-icon {
-      height: 92px;
-      width: 92px;
-      margin: 0 auto 16px;
-      border-radius: 28px;
-      display: grid;
-      place-items: center;
-      font-size: 2.3rem;
-      border: 2px solid rgba(255,255,255,.22);
-      box-shadow: inset 0 0 28px rgba(255,255,255,.12), 0 0 22px var(--shadow);
-    }
-
+    .choice:hover, .mission:hover { transform: translateY(-8px) rotate(-1deg); border-color: rgba(255,255,255,.42); box-shadow: 0 0 28px var(--shadow); }
+    .suit-icon { height: 92px; width: 92px; margin: 0 auto 16px; border-radius: 28px; display: grid; place-items: center; font-size: 2.3rem; border: 2px solid rgba(255,255,255,.22); box-shadow: inset 0 0 28px rgba(255,255,255,.12), 0 0 22px var(--shadow); }
     .miles-icon { background: linear-gradient(135deg, #111, #ff2d55 55%, #7a5cff); }
     .classic-icon { background: linear-gradient(135deg, #ff1e2d, #1677ff); }
     .stealth-icon { background: linear-gradient(135deg, #020204, #111827, #c084fc); }
+    .choice h3, .mission h3 { font-size: 1.25rem; margin-bottom: 10px; }
+    .choice p, .mission p { font-size: .96rem; margin-bottom: 0; }
 
-    .choice h3, .mission h3 {
-      font-size: 1.25rem;
-      margin-bottom: 10px;
-    }
+    .hud { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0; }
+    .hud-box { padding: 14px; border-radius: 18px; background: rgba(255,255,255,.08); border: 1px solid var(--border); }
+    .hud-box strong { display: block; font-size: 1.4rem; color: var(--accent3); }
 
-    .choice p, .mission p {
-      font-size: .96rem;
-      margin-bottom: 0;
-    }
+    .mission-grid { display: grid; grid-template-columns: repeat(2, minmax(220px, 1fr)); gap: 16px; }
+    .mission { min-height: 155px; text-align: left; }
 
-    .hud {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin: 24px 0;
-    }
+    .popup { position: fixed; inset: 0; display: none; place-items: center; background: rgba(0,0,0,.6); z-index: 30; padding: 20px; }
+    .popup.active { display: grid; }
+    .popup-box { width: min(620px, 94%); padding: 28px; border-radius: 24px; background: linear-gradient(135deg, rgba(20,20,35,.96), rgba(40,25,65,.96)); border: 1px solid var(--border); box-shadow: 0 0 42px var(--shadow); text-align: center; animation: popIn .25s ease; }
+    @keyframes popIn { from { transform: scale(.88); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
-    .hud-box {
-      padding: 14px;
-      border-radius: 18px;
-      background: rgba(255,255,255,.08);
-      border: 1px solid var(--border);
-    }
+    .power-meter { height: 16px; width: 100%; background: rgba(255,255,255,.12); border-radius: 999px; overflow: hidden; margin: 20px 0; border: 1px solid var(--border); }
+    .power-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3)); transition: width .4s ease; }
 
-    .hud-box strong {
-      display: block;
-      font-size: 1.4rem;
-      color: var(--accent3);
-    }
+    .final-message { font-size: 1.18rem; color: white; background: rgba(255,255,255,.09); border: 1px solid var(--border); border-radius: 22px; padding: 22px; margin-top: 20px; }
+    .tiny-note { margin-top: 16px; font-size: .88rem; color: rgba(255,255,255,.55); }
+    .hidden-secret { opacity: 0; transform: translateY(8px); transition: .35s ease; color: var(--accent3); font-weight: 800; }
+    body.theme-stealth .hidden-secret:hover, body.theme-stealth .hidden-secret.revealed { opacity: 1; transform: translateY(0); }
 
-    .mission-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(220px, 1fr));
-      gap: 16px;
-    }
+    .floating { position: fixed; pointer-events: none; z-index: 10; animation: floatAway 1s ease forwards; font-size: 1.4rem; text-shadow: 0 0 12px var(--accent3); }
+    @keyframes floatAway { from { transform: translateY(0) scale(1); opacity: 1; } to { transform: translateY(-70px) scale(1.7); opacity: 0; } }
+    .confetti { position: fixed; top: -20px; width: 10px; height: 18px; background: var(--accent); z-index: 40; animation: fall 2.8s linear forwards; }
+    @keyframes fall { to { transform: translateY(110vh) rotate(720deg); opacity: .2; } }
+    .shake { animation: bigShake .32s ease; }
+    @keyframes bigShake { 0%,100% { transform: translateX(0); } 20% { transform: translateX(-8px); } 40% { transform: translateX(8px); } 60% { transform: translateX(-5px); } 80% { transform: translateX(5px); } }
 
-    .mission {
-      min-height: 160px;
-      text-align: left;
-    }
-
-    .mission.locked {
-      opacity: .45;
-      filter: grayscale(.4);
-    }
-
-    .popup {
-      position: fixed;
-      inset: 0;
-      display: none;
-      place-items: center;
-      background: rgba(0,0,0,.6);
-      z-index: 30;
-      padding: 20px;
-    }
-
-    .popup.active {
-      display: grid;
-    }
-
-    .popup-box {
-      width: min(620px, 94%);
-      padding: 28px;
-      border-radius: 24px;
-      background: linear-gradient(135deg, rgba(20,20,35,.96), rgba(40,25,65,.96));
-      border: 1px solid var(--border);
-      box-shadow: 0 0 42px var(--shadow);
-      text-align: center;
-      animation: popIn .25s ease;
-    }
-
-    @keyframes popIn {
-      from { transform: scale(.88); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-
-    .power-meter {
-      height: 16px;
-      width: 100%;
-      background: rgba(255,255,255,.12);
-      border-radius: 999px;
-      overflow: hidden;
-      margin: 20px 0;
-      border: 1px solid var(--border);
-    }
-
-    .power-fill {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3));
-      transition: width .4s ease;
-    }
-
-    .final-message {
-      font-size: 1.18rem;
-      color: white;
-      background: rgba(255,255,255,.09);
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 22px;
-      margin-top: 20px;
-    }
-
-    .floating {
-      position: fixed;
-      pointer-events: none;
-      z-index: 10;
-      animation: floatAway 1s ease forwards;
-      font-size: 1.4rem;
-      text-shadow: 0 0 12px var(--accent3);
-    }
-
-    @keyframes floatAway {
-      from { transform: translateY(0) scale(1); opacity: 1; }
-      to { transform: translateY(-70px) scale(1.7); opacity: 0; }
-    }
-
-    .confetti {
-      position: fixed;
-      top: -20px;
-      width: 10px;
-      height: 18px;
-      background: var(--accent);
-      z-index: 40;
-      animation: fall 2.8s linear forwards;
-    }
-
-    @keyframes fall {
-      to { transform: translateY(110vh) rotate(720deg); opacity: .2; }
-    }
-
-    .shake {
-      animation: bigShake .32s ease;
-    }
-
-    @keyframes bigShake {
-      0%, 100% { transform: translateX(0); }
-      20% { transform: translateX(-8px); }
-      40% { transform: translateX(8px); }
-      60% { transform: translateX(-5px); }
-      80% { transform: translateX(5px); }
-    }
-
-    .tiny-note {
-      margin-top: 16px;
-      font-size: .88rem;
-      color: rgba(255,255,255,.55);
-    }
-
-    .hidden-secret {
-      opacity: 0;
-      transform: translateY(8px);
-      transition: .35s ease;
-      color: var(--accent3);
-      font-weight: 800;
-    }
-
-    body.theme-stealth .hidden-secret:hover,
-    body.theme-stealth .hidden-secret.revealed {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    #cakeImage { width: min(260px,80%); border-radius:24px; cursor:pointer; box-shadow:0 0 30px var(--shadow); transition:.2s ease; margin:16px auto; display:block; }
 
     @media (max-width: 780px) {
-      .choice-grid, .mission-grid, .hud {
-        grid-template-columns: 1fr;
-      }
-
-      .card {
-        padding: 24px 18px;
-      }
+      .choice-grid, .mission-grid, .hud { grid-template-columns: 1fr; }
+      .card { padding: 24px 18px; }
     }
   </style>
 </head>
+
 <body class="theme-miles">
   <div class="web-corner"></div>
   <div class="city"></div>
 
   <main class="container">
-    <!-- PAGE 1 -->
     <section class="page active" id="page-home">
       <div class="card">
         <span class="badge">Incoming Spider-Verse Signal</span>
         <h1 class="glitch">Happy Birthday, Hero</h1>
-        <p>
-          A new mission just opened in your universe. It includes powers, secret messages,
-          tiny chaos, and one very important birthday person.
-        </p>
+        <p>A new mission just opened in your universe. It includes powers, secret messages, tiny chaos, and one very important birthday person.</p>
         <div class="btn-row">
           <button class="btn" onclick="goToPage('page-suits')">Start Mission 🕷️</button>
           <button class="btn secondary" onclick="randomSpark(event)">Test Spider-Sense ✨</button>
@@ -497,29 +186,22 @@
       </div>
     </section>
 
-    <!-- PAGE 2 -->
     <section class="page" id="page-suits">
       <div class="card">
         <span class="badge">Step 1: Choose Your Suit</span>
         <h2>Pick your birthday universe</h2>
-        <p>
-          Your suit changes the website theme, special effect, mission messages,
-          and final birthday note.
-        </p>
-
+        <p>Your suit changes the theme, special effects, mission messages, and final birthday note.</p>
         <div class="choice-grid">
           <div class="choice" onclick="selectSuit('miles')">
             <div class="suit-icon miles-icon">⚡</div>
             <h3>Miles Suit</h3>
             <p>Neon, emotional, electric, city-night energy.</p>
           </div>
-
           <div class="choice" onclick="selectSuit('classic')">
             <div class="suit-icon classic-icon">🕸️</div>
             <h3>Classic Suit</h3>
             <p>Playful, comic-style, bright hero energy.</p>
           </div>
-
           <div class="choice" onclick="selectSuit('stealth')">
             <div class="suit-icon stealth-icon">🌙</div>
             <h3>Stealth Suit</h3>
@@ -529,86 +211,57 @@
       </div>
     </section>
 
-    <!-- PAGE 3 -->
     <section class="page" id="page-dashboard">
       <div class="card">
         <span class="badge" id="selectedSuitBadge">Suit Selected</span>
         <h2 id="dashboardTitle">Syncing with your universe...</h2>
         <p id="dashboardText">Your birthday powers are loading.</p>
-
         <div class="hud">
-          <div class="hud-box">
-            <strong id="powerName">Venom</strong>
-            Power
-          </div>
-          <div class="hud-box">
-            <strong id="vibeName">Neon</strong>
-            Vibe
-          </div>
-          <div class="hud-box">
-            <strong id="missionCount">0/4</strong>
-            Missions
-          </div>
+          <div class="hud-box"><strong id="powerName">Venom</strong>Power</div>
+          <div class="hud-box"><strong id="vibeName">Neon</strong>Vibe</div>
+          <div class="hud-box"><strong id="missionCount">0/6</strong>Missions</div>
         </div>
-
-        <div class="power-meter">
-          <div class="power-fill" id="powerFill"></div>
-        </div>
-
+        <div class="power-meter"><div class="power-fill" id="powerFill"></div></div>
         <div class="btn-row">
           <button class="btn" onclick="goToPage('page-missions')">Open Missions 🎁</button>
-          <button class="btn secondary" onclick="changeSuitAgain()">Change Suit</button>
+          <button class="btn secondary" onclick="goToPage('page-suits')">Change Suit</button>
         </div>
       </div>
     </section>
 
-    <!-- PAGE 4 -->
     <section class="page" id="page-missions">
       <div class="card">
         <span class="badge">Step 2: Birthday Missions</span>
         <h2>Unlock the surprises</h2>
-        <p>
-          Complete the missions to charge the final birthday reveal. Start with a song, then unlock the rest.
-        </p>
-
+        <p>Complete all 6 missions to charge the final birthday reveal.</p>
         <div class="mission-grid">
           <div class="mission" onclick="openSongMission()">
             <h3>🎧 Mission 00: Choose the Theme Song</h3>
             <p>Pick one song to play while the birthday universe loads.</p>
           </div>
-
           <div class="mission" onclick="openCakeMission()">
             <h3>🎂 Mission 00.5: Eat the Birthday Cake</h3>
-            <p>Tap the cake until it disappears. Yes, this is serious hero training.</p>
+            <p>Tap the cake until it disappears. Serious hero training.</p>
           </div>
-
           <div class="mission" onclick="openMission(0)">
             <h3>🕷️ Mission 01: Hero Scan</h3>
             <p>Find out what kind of hero energy you give.</p>
           </div>
-
           <div class="mission" onclick="openMission(1)">
             <h3>⚡ Mission 02: Power Boost</h3>
             <p>A small message disguised as a power-up.</p>
           </div>
-
           <div class="mission" onclick="openMission(2)">
             <h3>🌆 Mission 03: City Swing</h3>
             <p>A tiny Spider-Verse moment for your birthday.</p>
           </div>
-
           <div class="mission" onclick="openMission(3)">
             <h3>🎁 Mission 04: Final Key</h3>
             <p>Unlock this before the final birthday message.</p>
           </div>
         </div>
-
-        <div class="power-meter">
-          <div class="power-fill" id="missionPowerFill"></div>
-        </div>
-
+        <div class="power-meter"><div class="power-fill" id="missionPowerFill"></div></div>
         <p class="hidden-secret" id="secretLine">Stealth secret: even quiet heroes still save whole universes.</p>
-
         <div class="btn-row">
           <button class="btn" onclick="tryFinalReveal()">Final Reveal 🎂</button>
           <button class="btn secondary" onclick="goToPage('page-dashboard')">Back</button>
@@ -616,7 +269,6 @@
       </div>
     </section>
 
-    <!-- PAGE 5 -->
     <section class="page" id="page-final">
       <div class="card">
         <span class="badge">Mission Complete</span>
@@ -645,15 +297,9 @@
       <h2>Choose the Theme Song 🎧</h2>
       <p>Pick the song that matches this birthday universe.</p>
       <div class="btn-row">
-        <button class="btn" onclick="playSong('Chk Chk Boom (Instrumental).mp3')">
-          Chk Chk Boom ⚡
-        </button>
-        <button class="btn" onclick="playSong('Ice On My Teeth (Instrumental).mp3')">
-          Ice On My Teeth ❄️
-        </button>
-        <button class="btn" onclick="playSong('REDRED (Instrumental).mp3')">
-          REDRED 🔴
-        </button>
+        <button class="btn" onclick="playSong('Chk Chk Boom (Instrumental).mp3')">Chk Chk Boom ⚡</button>
+        <button class="btn" onclick="playSong('Ice On My Teeth (Instrumental).mp3')">Ice On My Teeth ❄️</button>
+        <button class="btn" onclick="playSong('REDRED (Instrumental).mp3')">REDRED 🔴</button>
       </div>
       <p class="tiny-note" id="chosenSongText">No song selected yet.</p>
       <button class="btn secondary" onclick="closeSongPopup()">Close</button>
@@ -664,29 +310,25 @@
     <div class="popup-box">
       <h2>Eat the Birthday Cake 🎂</h2>
       <p>Click the cake 5 times to complete the mission.</p>
-      <img id="cakeImage" src="birthday-cake.jpg" alt="Birthday cake" onclick="eatCake()" style="width:min(260px,80%); border-radius:24px; cursor:pointer; box-shadow:0 0 30px var(--shadow); transition:.2s ease; margin:16px auto; display:block;">
+      <img id="cakeImage" src="birthday-cake.jpg" alt="Birthday cake" onclick="eatCake()">
       <p id="cakeBitesText">Cake bites: 0/5</p>
       <button class="btn secondary" onclick="closeCakePopup()">Close</button>
-      <p class="tiny-note">Rename your JPG to <b>birthday-cake.jpg</b> and put it beside index.html.</p>
+      <p class="tiny-note">Your image file name should be: <b>birthday-cake.jpg</b></p>
     </div>
   </div>
 
   <script>
     let selectedSuit = localStorage.getItem("selectedSuit") || "miles";
-    let completedMissions = JSON.parse(localStorage.getItem("completedMissions")) || [];
+    let completedMissions = JSON.parse(localStorage.getItem("completedMissions") || "[]");
     let selectedSong = localStorage.getItem("selectedSong") || "";
+    let cakeBites = Number(localStorage.getItem("cakeBites") || 0);
     let audio = new Audio();
-    let cakeBites = Number(localStorage.getItem("cakeBites")) || 0;
 
     const suitData = {
       miles: {
-        bodyClass: "theme-miles",
-        badge: "Miles Suit Selected ⚡",
-        dashboardTitle: "Suit synced: Miles Mode",
+        bodyClass: "theme-miles", badge: "Miles Suit Selected ⚡", dashboardTitle: "Suit synced: Miles Mode",
         dashboardText: "Neon lights are on. Birthday energy is charging. Your special effect is electric sparks.",
-        power: "Venom",
-        vibe: "Neon",
-        clickIcon: "⚡",
+        power: "Venom", vibe: "Neon", clickIcon: "⚡",
         finalIntro: "In every universe, there are heroes. In this one, today is about you.",
         finalMessage: "Happy birthday to someone who has their own kind of power. You do not need to be perfect, loud, or always okay to matter. You already bring something rare into this universe: your presence, your heart, your humor, and the way you keep going. I hope this year feels kinder, brighter, and full of moments that remind you how loved you are.",
         missions: [
@@ -697,13 +339,9 @@
         ]
       },
       classic: {
-        bodyClass: "theme-classic",
-        badge: "Classic Suit Selected 🕸️",
-        dashboardTitle: "Suit synced: Classic Hero Mode",
+        bodyClass: "theme-classic", badge: "Classic Suit Selected 🕸️", dashboardTitle: "Suit synced: Classic Hero Mode",
         dashboardText: "Comic panels loaded. Web effects ready. Your special effect is web bursts.",
-        power: "Webs",
-        vibe: "Comic",
-        clickIcon: "🕸️",
+        power: "Webs", vibe: "Comic", clickIcon: "🕸️",
         finalIntro: "With great birthday power comes great cake responsibility.",
         finalMessage: "Happy birthday, hero. I hope your day is full of laughter, dramatic entrance energy, snacks, and people reminding you how much you mean to them. You are the kind of person who makes ordinary days feel lighter, and that is a real superpower. May this year bring you more wins, more peace, and fewer villains stealing your good mood.",
         missions: [
@@ -714,13 +352,9 @@
         ]
       },
       stealth: {
-        bodyClass: "theme-stealth",
-        badge: "Stealth Suit Selected 🌙",
-        dashboardTitle: "Suit synced: Stealth Mode",
+        bodyClass: "theme-stealth", badge: "Stealth Suit Selected 🌙", dashboardTitle: "Suit synced: Stealth Mode",
         dashboardText: "Quiet universe loaded. Hidden secrets enabled. Your special effect is disappearing stars.",
-        power: "Stealth",
-        vibe: "Mystery",
-        clickIcon: "🌙",
+        power: "Stealth", vibe: "Mystery", clickIcon: "🌙",
         finalIntro: "Some heroes are quiet, but their impact is still impossible to miss.",
         finalMessage: "Happy birthday to someone whose presence matters more than they may realize. You do not have to be seen by everyone to be important. The way you care, try, survive hard days, and still continue is something powerful. I hope this year gives you soft places to rest, people who notice your effort, and happiness that finds you gently but stays for a long time.",
         missions: [
@@ -755,17 +389,17 @@
     function selectSuit(suit) {
       selectedSuit = suit;
       completedMissions = [];
+      selectedSong = "";
+      cakeBites = 0;
       localStorage.setItem("selectedSuit", selectedSuit);
       localStorage.setItem("completedMissions", JSON.stringify(completedMissions));
+      localStorage.removeItem("selectedSong");
+      localStorage.removeItem("cakeBites");
       applySuit();
       document.body.classList.add("shake");
       setTimeout(() => document.body.classList.remove("shake"), 350);
       setTimeout(() => goToPage("page-dashboard"), 550);
       burstAtCenter(suitData[suit].clickIcon);
-    }
-
-    function changeSuitAgain() {
-      goToPage("page-suits");
     }
 
     function openSongMission() {
@@ -777,24 +411,20 @@
       audio.pause();
       audio = new Audio(file);
       audio.loop = true;
-      audio.play();
+      audio.volume = 0.8;
 
-      selectedSong = file;
-      localStorage.setItem("selectedSong", selectedSong);
-
-      document.getElementById("chosenSongText").textContent =
-        "Now playing: " + file;
-
-      if (!completedMissions.includes("song")) {
-        completedMissions.push("song");
-        localStorage.setItem("completedMissions", JSON.stringify(completedMissions));
-      }
-
-      updateMissionProgress();
-      burstAtCenter("🎧");
-    }
-      updateMissionProgress();
-      burstAtCenter("🎧");
+      audio.play().then(() => {
+        selectedSong = file;
+        localStorage.setItem("selectedSong", selectedSong);
+        document.getElementById("chosenSongText").textContent = "Now playing: " + file;
+        completeMission("song");
+        burstAtCenter("🎧");
+      }).catch(() => {
+        selectedSong = file;
+        localStorage.setItem("selectedSong", selectedSong);
+        document.getElementById("chosenSongText").textContent = "Selected, but audio did not play. Check the MP3 file name/location.";
+        completeMission("song");
+      });
     }
 
     function closeSongPopup() {
@@ -810,23 +440,20 @@
       if (cakeBites < 5) {
         cakeBites++;
         localStorage.setItem("cakeBites", cakeBites);
-        document.getElementById("cakeImage").style.transform = `scale(${1 - cakeBites * 0.08}) rotate(${cakeBites % 2 === 0 ? 4 : -4}deg)`;
         createFloating("🍰", window.innerWidth / 2, window.innerHeight / 2);
       }
-
-      if (cakeBites >= 5 && !completedMissions.includes("cake")) {
-        completedMissions.push("cake");
-        localStorage.setItem("completedMissions", JSON.stringify(completedMissions));
+      if (cakeBites >= 5) {
+        completeMission("cake");
         burstAtCenter("🎂");
       }
-
       updateCakeDisplay();
-      updateMissionProgress();
     }
 
     function updateCakeDisplay() {
+      const img = document.getElementById("cakeImage");
       document.getElementById("cakeBitesText").textContent = cakeBites >= 5 ? "Cake completed. Hero training successful 🎂" : "Cake bites: " + cakeBites + "/5";
-      document.getElementById("cakeImage").style.opacity = cakeBites >= 5 ? ".25" : "1";
+      img.style.opacity = cakeBites >= 5 ? ".25" : "1";
+      img.style.transform = "scale(" + Math.max(0.55, 1 - cakeBites * 0.08) + ")";
     }
 
     function closeCakePopup() {
@@ -839,18 +466,17 @@
       document.getElementById("popupTitle").textContent = mission[0];
       document.getElementById("popupText").textContent = mission[1];
       document.getElementById("popup").classList.add("active");
+      completeMission(index);
+      if (selectedSuit === "stealth" && index === 2) document.getElementById("secretLine").classList.add("revealed");
+      burstAtCenter(data.clickIcon);
+    }
 
-      if (!completedMissions.includes(index)) {
-        completedMissions.push(index);
+    function completeMission(id) {
+      if (!completedMissions.includes(id)) {
+        completedMissions.push(id);
         localStorage.setItem("completedMissions", JSON.stringify(completedMissions));
       }
-
-      if (selectedSuit === "stealth" && index === 2) {
-        document.getElementById("secretLine").classList.add("revealed");
-      }
-
       updateMissionProgress();
-      burstAtCenter(data.clickIcon);
     }
 
     function closePopup() {
@@ -858,7 +484,7 @@
     }
 
     function updateMissionProgress() {
-      const percent = (completedMissions.length / 6) * 100;
+      const percent = Math.min(100, (completedMissions.length / 6) * 100);
       document.getElementById("missionCount").textContent = completedMissions.length + "/6";
       document.getElementById("powerFill").style.width = percent + "%";
       document.getElementById("missionPowerFill").style.width = percent + "%";
@@ -871,7 +497,6 @@
         document.getElementById("popup").classList.add("active");
         return;
       }
-
       goToPage("page-final");
       launchConfetti();
     }
@@ -888,8 +513,7 @@
     }
 
     function randomSpark(event) {
-      const icon = suitData[selectedSuit].clickIcon;
-      createFloating(icon, event.clientX, event.clientY);
+      createFloating(suitData[selectedSuit].clickIcon, event.clientX, event.clientY);
     }
 
     document.addEventListener("click", function(e) {
@@ -912,9 +536,7 @@
       const centerX = window.innerWidth / 2;
       const centerY = window.innerHeight / 2;
       for (let i = 0; i < 12; i++) {
-        setTimeout(() => {
-          createFloating(icon, centerX + (Math.random() * 180 - 90), centerY + (Math.random() * 100 - 50));
-        }, i * 35);
+        setTimeout(() => createFloating(icon, centerX + (Math.random() * 180 - 90), centerY + (Math.random() * 100 - 50)), i * 35);
       }
     }
 
@@ -923,7 +545,565 @@
         const confetti = document.createElement("div");
         confetti.className = "confetti";
         confetti.style.left = Math.random() * 100 + "vw";
-        confetti.style.animationDelay = Math.random() * 0.8 + "s";
+        confetti.style.animationDelay = Math.random() * .8 + "s";
+        confetti.style.background = ["var(--accent)", "var(--accent2)", "var(--accent3)"][Math.floor(Math.random() * 3)];
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 3600);
+      }
+    }
+
+    applySuit();
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday, Spider-Hero</title>
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg1: #070711;
+      --bg2: #1b0f2f;
+      --card: rgba(255, 255, 255, 0.09);
+      --text: #ffffff;
+      --muted: rgba(255, 255, 255, 0.72);
+      --accent: #ff2d55;
+      --accent2: #7a5cff;
+      --accent3: #00e5ff;
+      --shadow: rgba(255, 45, 85, 0.35);
+      --border: rgba(255, 255, 255, 0.16);
+    }
+
+    body.theme-miles {
+      --bg1: #050512; --bg2: #251046; --card: rgba(120, 70, 255, 0.14);
+      --accent: #ff2d55; --accent2: #7a5cff; --accent3: #00e5ff;
+      --shadow: rgba(0, 229, 255, 0.35);
+    }
+
+    body.theme-classic {
+      --bg1: #05091f; --bg2: #350606; --card: rgba(255,255,255,.11);
+      --accent: #ff1e2d; --accent2: #1677ff; --accent3: #ffffff;
+      --shadow: rgba(255, 30, 45, 0.35);
+    }
+
+    body.theme-stealth {
+      --bg1: #020204; --bg2: #111827; --card: rgba(255,255,255,.06);
+      --accent: #c084fc; --accent2: #38bdf8; --accent3: #e5e7eb;
+      --shadow: rgba(192, 132, 252, 0.28);
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      color: var(--text);
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at 20% 20%, var(--accent2), transparent 24%),
+        radial-gradient(circle at 80% 0%, var(--accent), transparent 22%),
+        linear-gradient(135deg, var(--bg1), var(--bg2));
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.12;
+      background-image:
+        linear-gradient(transparent 95%, rgba(255,255,255,.4) 96%),
+        linear-gradient(90deg, transparent 95%, rgba(255,255,255,.4) 96%);
+      background-size: 38px 38px;
+      animation: gridMove 12s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes gridMove { from { transform: translateY(0); } to { transform: translateY(38px); } }
+
+    .city {
+      position: fixed; left: 0; right: 0; bottom: 0; height: 170px;
+      pointer-events: none; z-index: 1; opacity: 0.7;
+      background: linear-gradient(to top, rgba(0,0,0,.86), transparent);
+    }
+
+    .city::before {
+      content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 120px;
+      background: #030306;
+      clip-path: polygon(0 100%,0 45%,5% 45%,5% 25%,10% 25%,10% 60%,16% 60%,16% 35%,21% 35%,21% 10%,27% 10%,27% 58%,33% 58%,33% 30%,40% 30%,40% 52%,45% 52%,45% 20%,52% 20%,52% 66%,60% 66%,60% 38%,67% 38%,67% 18%,74% 18%,74% 55%,79% 55%,79% 32%,85% 32%,85% 48%,91% 48%,91% 22%,97% 22%,97% 63%,100% 63%,100% 100%);
+    }
+
+    .web-corner {
+      position: fixed; width: 190px; height: 190px; top: -20px; right: -20px;
+      opacity: 0.22; border-radius: 50%;
+      background: repeating-radial-gradient(circle, transparent 0 20px, white 21px 22px), repeating-conic-gradient(from 0deg, transparent 0 18deg, white 19deg 20deg);
+      z-index: 1; pointer-events: none;
+    }
+
+    .container { position: relative; z-index: 2; width: min(1050px, 92%); margin: 0 auto; padding: 34px 0 90px; }
+    .page { display: none; min-height: 84vh; align-items: center; justify-content: center; animation: pageIn .55s ease; }
+    .page.active { display: flex; }
+    @keyframes pageIn { from { opacity: 0; transform: translateY(18px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
+    .card {
+      width: 100%; max-width: 850px; padding: 32px; border: 1px solid var(--border);
+      border-radius: 28px; background: var(--card); backdrop-filter: blur(18px);
+      box-shadow: 0 22px 70px rgba(0,0,0,.35), 0 0 35px var(--shadow);
+      text-align: center; position: relative; overflow: hidden;
+    }
+
+    .badge { display: inline-block; padding: 8px 14px; border-radius: 999px; background: rgba(255,255,255,.12); border: 1px solid var(--border); color: var(--muted); margin-bottom: 16px; font-size: .92rem; }
+    h1 { font-size: clamp(2.3rem, 7vw, 5.6rem); line-height: .96; margin-bottom: 18px; letter-spacing: -2px; text-shadow: 0 0 22px var(--shadow); }
+    h2 { font-size: clamp(1.7rem, 4vw, 3rem); margin-bottom: 14px; }
+    p { color: var(--muted); font-size: 1.08rem; line-height: 1.7; margin: 0 auto 18px; max-width: 680px; }
+
+    .glitch:hover { animation: glitchShake .25s infinite; }
+    @keyframes glitchShake { 0% { transform: translate(0); } 25% { transform: translate(2px,-1px); } 50% { transform: translate(-2px,1px); } 75% { transform: translate(1px,2px); } 100% { transform: translate(0); } }
+
+    .btn-row, .choice-grid, .mission-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 24px; }
+    button, .choice, .mission { border: 0; cursor: pointer; font-family: inherit; color: var(--text); }
+
+    .btn {
+      padding: 14px 22px; border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 24px var(--shadow); font-weight: 800; letter-spacing: .3px;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .btn:hover { transform: translateY(-4px) scale(1.03); box-shadow: 0 0 34px var(--shadow); }
+    .btn.secondary { background: rgba(255,255,255,.12); border: 1px solid var(--border); }
+
+    .choice-grid { display: grid; grid-template-columns: repeat(3, minmax(180px, 1fr)); gap: 18px; }
+    .choice, .mission {
+      min-height: 220px; padding: 22px; border-radius: 24px; background: rgba(255,255,255,.09);
+      border: 1px solid var(--border); position: relative; overflow: hidden;
+      transition: transform .25s ease, border .25s ease, box-shadow .25s ease;
+    }
+
+    .choice:hover, .mission:hover { transform: translateY(-8px) rotate(-1deg); border-color: rgba(255,255,255,.42); box-shadow: 0 0 28px var(--shadow); }
+    .suit-icon { height: 92px; width: 92px; margin: 0 auto 16px; border-radius: 28px; display: grid; place-items: center; font-size: 2.3rem; border: 2px solid rgba(255,255,255,.22); box-shadow: inset 0 0 28px rgba(255,255,255,.12), 0 0 22px var(--shadow); }
+    .miles-icon { background: linear-gradient(135deg, #111, #ff2d55 55%, #7a5cff); }
+    .classic-icon { background: linear-gradient(135deg, #ff1e2d, #1677ff); }
+    .stealth-icon { background: linear-gradient(135deg, #020204, #111827, #c084fc); }
+    .choice h3, .mission h3 { font-size: 1.25rem; margin-bottom: 10px; }
+    .choice p, .mission p { font-size: .96rem; margin-bottom: 0; }
+
+    .hud { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0; }
+    .hud-box { padding: 14px; border-radius: 18px; background: rgba(255,255,255,.08); border: 1px solid var(--border); }
+    .hud-box strong { display: block; font-size: 1.4rem; color: var(--accent3); }
+
+    .mission-grid { display: grid; grid-template-columns: repeat(2, minmax(220px, 1fr)); gap: 16px; }
+    .mission { min-height: 155px; text-align: left; }
+
+    .popup { position: fixed; inset: 0; display: none; place-items: center; background: rgba(0,0,0,.6); z-index: 30; padding: 20px; }
+    .popup.active { display: grid; }
+    .popup-box { width: min(620px, 94%); padding: 28px; border-radius: 24px; background: linear-gradient(135deg, rgba(20,20,35,.96), rgba(40,25,65,.96)); border: 1px solid var(--border); box-shadow: 0 0 42px var(--shadow); text-align: center; animation: popIn .25s ease; }
+    @keyframes popIn { from { transform: scale(.88); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+    .power-meter { height: 16px; width: 100%; background: rgba(255,255,255,.12); border-radius: 999px; overflow: hidden; margin: 20px 0; border: 1px solid var(--border); }
+    .power-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3)); transition: width .4s ease; }
+
+    .final-message { font-size: 1.18rem; color: white; background: rgba(255,255,255,.09); border: 1px solid var(--border); border-radius: 22px; padding: 22px; margin-top: 20px; }
+    .tiny-note { margin-top: 16px; font-size: .88rem; color: rgba(255,255,255,.55); }
+    .hidden-secret { opacity: 0; transform: translateY(8px); transition: .35s ease; color: var(--accent3); font-weight: 800; }
+    body.theme-stealth .hidden-secret:hover, body.theme-stealth .hidden-secret.revealed { opacity: 1; transform: translateY(0); }
+
+    .floating { position: fixed; pointer-events: none; z-index: 10; animation: floatAway 1s ease forwards; font-size: 1.4rem; text-shadow: 0 0 12px var(--accent3); }
+    @keyframes floatAway { from { transform: translateY(0) scale(1); opacity: 1; } to { transform: translateY(-70px) scale(1.7); opacity: 0; } }
+    .confetti { position: fixed; top: -20px; width: 10px; height: 18px; background: var(--accent); z-index: 40; animation: fall 2.8s linear forwards; }
+    @keyframes fall { to { transform: translateY(110vh) rotate(720deg); opacity: .2; } }
+    .shake { animation: bigShake .32s ease; }
+    @keyframes bigShake { 0%,100% { transform: translateX(0); } 20% { transform: translateX(-8px); } 40% { transform: translateX(8px); } 60% { transform: translateX(-5px); } 80% { transform: translateX(5px); } }
+
+    #cakeImage { width: min(260px,80%); border-radius:24px; cursor:pointer; box-shadow:0 0 30px var(--shadow); transition:.2s ease; margin:16px auto; display:block; }
+
+    @media (max-width: 780px) {
+      .choice-grid, .mission-grid, .hud { grid-template-columns: 1fr; }
+      .card { padding: 24px 18px; }
+    }
+  </style>
+</head>
+
+<body class="theme-miles">
+  <div class="web-corner"></div>
+  <div class="city"></div>
+
+  <main class="container">
+    <section class="page active" id="page-home">
+      <div class="card">
+        <span class="badge">Incoming Spider-Verse Signal</span>
+        <h1 class="glitch">Happy Birthday, Hero</h1>
+        <p>A new mission just opened in your universe. It includes powers, secret messages, tiny chaos, and one very important birthday person.</p>
+        <div class="btn-row">
+          <button class="btn" onclick="goToPage('page-suits')">Start Mission 🕷️</button>
+          <button class="btn secondary" onclick="randomSpark(event)">Test Spider-Sense ✨</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-suits">
+      <div class="card">
+        <span class="badge">Step 1: Choose Your Suit</span>
+        <h2>Pick your birthday universe</h2>
+        <p>Your suit changes the theme, special effects, mission messages, and final birthday note.</p>
+        <div class="choice-grid">
+          <div class="choice" onclick="selectSuit('miles')">
+            <div class="suit-icon miles-icon">⚡</div>
+            <h3>Miles Suit</h3>
+            <p>Neon, emotional, electric, city-night energy.</p>
+          </div>
+          <div class="choice" onclick="selectSuit('classic')">
+            <div class="suit-icon classic-icon">🕸️</div>
+            <h3>Classic Suit</h3>
+            <p>Playful, comic-style, bright hero energy.</p>
+          </div>
+          <div class="choice" onclick="selectSuit('stealth')">
+            <div class="suit-icon stealth-icon">🌙</div>
+            <h3>Stealth Suit</h3>
+            <p>Quiet, mysterious, soft glow, hidden secrets.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-dashboard">
+      <div class="card">
+        <span class="badge" id="selectedSuitBadge">Suit Selected</span>
+        <h2 id="dashboardTitle">Syncing with your universe...</h2>
+        <p id="dashboardText">Your birthday powers are loading.</p>
+        <div class="hud">
+          <div class="hud-box"><strong id="powerName">Venom</strong>Power</div>
+          <div class="hud-box"><strong id="vibeName">Neon</strong>Vibe</div>
+          <div class="hud-box"><strong id="missionCount">0/6</strong>Missions</div>
+        </div>
+        <div class="power-meter"><div class="power-fill" id="powerFill"></div></div>
+        <div class="btn-row">
+          <button class="btn" onclick="goToPage('page-missions')">Open Missions 🎁</button>
+          <button class="btn secondary" onclick="goToPage('page-suits')">Change Suit</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-missions">
+      <div class="card">
+        <span class="badge">Step 2: Birthday Missions</span>
+        <h2>Unlock the surprises</h2>
+        <p>Complete all 6 missions to charge the final birthday reveal.</p>
+        <div class="mission-grid">
+          <div class="mission" onclick="openSongMission()">
+            <h3>🎧 Mission 00: Choose the Theme Song</h3>
+            <p>Pick one song to play while the birthday universe loads.</p>
+          </div>
+          <div class="mission" onclick="openCakeMission()">
+            <h3>🎂 Mission 00.5: Eat the Birthday Cake</h3>
+            <p>Tap the cake until it disappears. Serious hero training.</p>
+          </div>
+          <div class="mission" onclick="openMission(0)">
+            <h3>🕷️ Mission 01: Hero Scan</h3>
+            <p>Find out what kind of hero energy you give.</p>
+          </div>
+          <div class="mission" onclick="openMission(1)">
+            <h3>⚡ Mission 02: Power Boost</h3>
+            <p>A small message disguised as a power-up.</p>
+          </div>
+          <div class="mission" onclick="openMission(2)">
+            <h3>🌆 Mission 03: City Swing</h3>
+            <p>A tiny Spider-Verse moment for your birthday.</p>
+          </div>
+          <div class="mission" onclick="openMission(3)">
+            <h3>🎁 Mission 04: Final Key</h3>
+            <p>Unlock this before the final birthday message.</p>
+          </div>
+        </div>
+        <div class="power-meter"><div class="power-fill" id="missionPowerFill"></div></div>
+        <p class="hidden-secret" id="secretLine">Stealth secret: even quiet heroes still save whole universes.</p>
+        <div class="btn-row">
+          <button class="btn" onclick="tryFinalReveal()">Final Reveal 🎂</button>
+          <button class="btn secondary" onclick="goToPage('page-dashboard')">Back</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-final">
+      <div class="card">
+        <span class="badge">Mission Complete</span>
+        <h1>Happy Birthday 🕷️</h1>
+        <p id="finalIntro">Your universe is lucky to have you.</p>
+        <div class="final-message" id="finalMessage"></div>
+        <div class="btn-row">
+          <button class="btn" onclick="launchConfetti(); randomSpark(event);">Celebrate Again 🎉</button>
+          <button class="btn secondary" onclick="resetMission()">Restart Mission</button>
+        </div>
+        <p class="tiny-note">Made with chaotic Spider-Verse birthday energy.</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="popup" id="popup">
+    <div class="popup-box">
+      <h2 id="popupTitle">Mission</h2>
+      <p id="popupText">Message</p>
+      <button class="btn" onclick="closePopup()">Mission Complete</button>
+    </div>
+  </div>
+
+  <div class="popup" id="songPopup">
+    <div class="popup-box">
+      <h2>Choose the Theme Song 🎧</h2>
+      <p>Pick the song that matches this birthday universe.</p>
+      <div class="btn-row">
+        <button class="btn" onclick="playSong('Chk Chk Boom (Instrumental).mp3')">Chk Chk Boom ⚡</button>
+        <button class="btn" onclick="playSong('Ice On My Teeth (Instrumental).mp3')">Ice On My Teeth ❄️</button>
+        <button class="btn" onclick="playSong('REDRED (Instrumental).mp3')">REDRED 🔴</button>
+      </div>
+      <p class="tiny-note" id="chosenSongText">No song selected yet.</p>
+      <button class="btn secondary" onclick="closeSongPopup()">Close</button>
+    </div>
+  </div>
+
+  <div class="popup" id="cakePopup">
+    <div class="popup-box">
+      <h2>Eat the Birthday Cake 🎂</h2>
+      <p>Click the cake 5 times to complete the mission.</p>
+      <img id="cakeImage" src="birthday-cake.jpg" alt="Birthday cake" onclick="eatCake()">
+      <p id="cakeBitesText">Cake bites: 0/5</p>
+      <button class="btn secondary" onclick="closeCakePopup()">Close</button>
+      <p class="tiny-note">Your image file name should be: <b>birthday-cake.jpg</b></p>
+    </div>
+  </div>
+
+  <script>
+    let selectedSuit = localStorage.getItem("selectedSuit") || "miles";
+    let completedMissions = JSON.parse(localStorage.getItem("completedMissions") || "[]");
+    let selectedSong = localStorage.getItem("selectedSong") || "";
+    let cakeBites = Number(localStorage.getItem("cakeBites") || 0);
+    let audio = new Audio();
+
+    const suitData = {
+      miles: {
+        bodyClass: "theme-miles", badge: "Miles Suit Selected ⚡", dashboardTitle: "Suit synced: Miles Mode",
+        dashboardText: "Neon lights are on. Birthday energy is charging. Your special effect is electric sparks.",
+        power: "Venom", vibe: "Neon", clickIcon: "⚡",
+        finalIntro: "In every universe, there are heroes. In this one, today is about you.",
+        finalMessage: "Happy birthday to someone who has their own kind of power. You do not need to be perfect, loud, or always okay to matter. You already bring something rare into this universe: your presence, your heart, your humor, and the way you keep going. I hope this year feels kinder, brighter, and full of moments that remind you how loved you are.",
+        missions: [
+          ["Hero Scan Complete ⚡", "Result: rare main-character energy detected. Kind heart, strong spirit, and suspiciously cool birthday aura."],
+          ["Venom Boost Activated", "Tiny reminder: you are allowed to rest. Even Spider-Man lands somewhere safe between swings."],
+          ["City Swing Started", "Imagine the city lights below, headphones on, wind moving past you, and the whole universe quietly cheering for your birthday."],
+          ["Final Key Found", "Key message: you are not replaceable in this universe. Not today, not ever."]
+        ]
+      },
+      classic: {
+        bodyClass: "theme-classic", badge: "Classic Suit Selected 🕸️", dashboardTitle: "Suit synced: Classic Hero Mode",
+        dashboardText: "Comic panels loaded. Web effects ready. Your special effect is web bursts.",
+        power: "Webs", vibe: "Comic", clickIcon: "🕸️",
+        finalIntro: "With great birthday power comes great cake responsibility.",
+        finalMessage: "Happy birthday, hero. I hope your day is full of laughter, dramatic entrance energy, snacks, and people reminding you how much you mean to them. You are the kind of person who makes ordinary days feel lighter, and that is a real superpower. May this year bring you more wins, more peace, and fewer villains stealing your good mood.",
+        missions: [
+          ["Hero Scan Complete 🕸️", "Result: classic hero behavior detected. Brave, funny, dramatic when needed, and absolutely birthday-worthy."],
+          ["Web Shield Activated", "Protection message: bad vibes are blocked today. Only cake, smiles, and heroic treatment allowed."],
+          ["Comic Panel Unlocked", "Panel 1: You wake up. Panel 2: Everyone realizes it is your birthday. Panel 3: The universe applauds."],
+          ["Final Key Found", "Key message: today, the spotlight is yours. No side-character behavior allowed."]
+        ]
+      },
+      stealth: {
+        bodyClass: "theme-stealth", badge: "Stealth Suit Selected 🌙", dashboardTitle: "Suit synced: Stealth Mode",
+        dashboardText: "Quiet universe loaded. Hidden secrets enabled. Your special effect is disappearing stars.",
+        power: "Stealth", vibe: "Mystery", clickIcon: "🌙",
+        finalIntro: "Some heroes are quiet, but their impact is still impossible to miss.",
+        finalMessage: "Happy birthday to someone whose presence matters more than they may realize. You do not have to be seen by everyone to be important. The way you care, try, survive hard days, and still continue is something powerful. I hope this year gives you soft places to rest, people who notice your effort, and happiness that finds you gently but stays for a long time.",
+        missions: [
+          ["Stealth Scan Complete 🌙", "Result: quiet strength detected. You may not always show it, but your impact is real."],
+          ["Hidden Power Activated", "Reminder: being tired does not make you weak. Even hidden heroes deserve warmth and care."],
+          ["Night Swing Unlocked", "The city is calm, the sky is dark, and somewhere in this universe, someone is very glad you exist."],
+          ["Final Key Found", "Key message: you matter even in moments where you feel invisible."]
+        ]
+      }
+    };
+
+    function applySuit() {
+      const data = suitData[selectedSuit];
+      document.body.className = data.bodyClass;
+      document.getElementById("selectedSuitBadge").textContent = data.badge;
+      document.getElementById("dashboardTitle").textContent = data.dashboardTitle;
+      document.getElementById("dashboardText").textContent = data.dashboardText;
+      document.getElementById("powerName").textContent = data.power;
+      document.getElementById("vibeName").textContent = data.vibe;
+      document.getElementById("finalIntro").textContent = data.finalIntro;
+      document.getElementById("finalMessage").textContent = data.finalMessage;
+      updateMissionProgress();
+    }
+
+    function goToPage(id) {
+      document.querySelectorAll(".page").forEach(page => page.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      applySuit();
+    }
+
+    function selectSuit(suit) {
+      selectedSuit = suit;
+      completedMissions = [];
+      selectedSong = "";
+      cakeBites = 0;
+      localStorage.setItem("selectedSuit", selectedSuit);
+      localStorage.setItem("completedMissions", JSON.stringify(completedMissions));
+      localStorage.removeItem("selectedSong");
+      localStorage.removeItem("cakeBites");
+      applySuit();
+      document.body.classList.add("shake");
+      setTimeout(() => document.body.classList.remove("shake"), 350);
+      setTimeout(() => goToPage("page-dashboard"), 550);
+      burstAtCenter(suitData[suit].clickIcon);
+    }
+
+    function openSongMission() {
+      document.getElementById("songPopup").classList.add("active");
+      document.getElementById("chosenSongText").textContent = selectedSong ? "Selected song: " + selectedSong : "No song selected yet.";
+    }
+
+    function playSong(file) {
+      audio.pause();
+      audio = new Audio(file);
+      audio.loop = true;
+      audio.volume = 0.8;
+
+      audio.play().then(() => {
+        selectedSong = file;
+        localStorage.setItem("selectedSong", selectedSong);
+        document.getElementById("chosenSongText").textContent = "Now playing: " + file;
+        completeMission("song");
+        burstAtCenter("🎧");
+      }).catch(() => {
+        selectedSong = file;
+        localStorage.setItem("selectedSong", selectedSong);
+        document.getElementById("chosenSongText").textContent = "Selected, but audio did not play. Check the MP3 file name/location.";
+        completeMission("song");
+      });
+    }
+
+    function closeSongPopup() {
+      document.getElementById("songPopup").classList.remove("active");
+    }
+
+    function openCakeMission() {
+      document.getElementById("cakePopup").classList.add("active");
+      updateCakeDisplay();
+    }
+
+    function eatCake() {
+      if (cakeBites < 5) {
+        cakeBites++;
+        localStorage.setItem("cakeBites", cakeBites);
+        createFloating("🍰", window.innerWidth / 2, window.innerHeight / 2);
+      }
+      if (cakeBites >= 5) {
+        completeMission("cake");
+        burstAtCenter("🎂");
+      }
+      updateCakeDisplay();
+    }
+
+    function updateCakeDisplay() {
+      const img = document.getElementById("cakeImage");
+      document.getElementById("cakeBitesText").textContent = cakeBites >= 5 ? "Cake completed. Hero training successful 🎂" : "Cake bites: " + cakeBites + "/5";
+      img.style.opacity = cakeBites >= 5 ? ".25" : "1";
+      img.style.transform = "scale(" + Math.max(0.55, 1 - cakeBites * 0.08) + ")";
+    }
+
+    function closeCakePopup() {
+      document.getElementById("cakePopup").classList.remove("active");
+    }
+
+    function openMission(index) {
+      const data = suitData[selectedSuit];
+      const mission = data.missions[index];
+      document.getElementById("popupTitle").textContent = mission[0];
+      document.getElementById("popupText").textContent = mission[1];
+      document.getElementById("popup").classList.add("active");
+      completeMission(index);
+      if (selectedSuit === "stealth" && index === 2) document.getElementById("secretLine").classList.add("revealed");
+      burstAtCenter(data.clickIcon);
+    }
+
+    function completeMission(id) {
+      if (!completedMissions.includes(id)) {
+        completedMissions.push(id);
+        localStorage.setItem("completedMissions", JSON.stringify(completedMissions));
+      }
+      updateMissionProgress();
+    }
+
+    function closePopup() {
+      document.getElementById("popup").classList.remove("active");
+    }
+
+    function updateMissionProgress() {
+      const percent = Math.min(100, (completedMissions.length / 6) * 100);
+      document.getElementById("missionCount").textContent = completedMissions.length + "/6";
+      document.getElementById("powerFill").style.width = percent + "%";
+      document.getElementById("missionPowerFill").style.width = percent + "%";
+    }
+
+    function tryFinalReveal() {
+      if (completedMissions.length < 6) {
+        document.getElementById("popupTitle").textContent = "Final Reveal Locked";
+        document.getElementById("popupText").textContent = "Complete all 6 missions first. The birthday universe is dramatic like that.";
+        document.getElementById("popup").classList.add("active");
+        return;
+      }
+      goToPage("page-final");
+      launchConfetti();
+    }
+
+    function resetMission() {
+      completedMissions = [];
+      selectedSong = "";
+      cakeBites = 0;
+      localStorage.setItem("completedMissions", JSON.stringify(completedMissions));
+      localStorage.removeItem("selectedSong");
+      localStorage.removeItem("cakeBites");
+      updateMissionProgress();
+      goToPage("page-home");
+    }
+
+    function randomSpark(event) {
+      createFloating(suitData[selectedSuit].clickIcon, event.clientX, event.clientY);
+    }
+
+    document.addEventListener("click", function(e) {
+      if (e.target.closest("button") || e.target.closest(".choice") || e.target.closest(".mission")) {
+        createFloating(suitData[selectedSuit].clickIcon, e.clientX, e.clientY);
+      }
+    });
+
+    function createFloating(text, x, y) {
+      const el = document.createElement("div");
+      el.className = "floating";
+      el.textContent = text;
+      el.style.left = x + "px";
+      el.style.top = y + "px";
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 1000);
+    }
+
+    function burstAtCenter(icon) {
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+      for (let i = 0; i < 12; i++) {
+        setTimeout(() => createFloating(icon, centerX + (Math.random() * 180 - 90), centerY + (Math.random() * 100 - 50)), i * 35);
+      }
+    }
+
+    function launchConfetti() {
+      for (let i = 0; i < 90; i++) {
+        const confetti = document.createElement("div");
+        confetti.className = "confetti";
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.animationDelay = Math.random() * .8 + "s";
         confetti.style.background = ["var(--accent)", "var(--accent2)", "var(--accent3)"][Math.floor(Math.random() * 3)];
         document.body.appendChild(confetti);
         setTimeout(() => confetti.remove(), 3600);
