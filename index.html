@@ -878,7 +878,7 @@
       <h2>Choose the Theme Song 🎧</h2>
       <p>Pick the song that matches this birthday universe.</p>
       <div class="btn-row">
-        <button class="btn song-btn" data-file="Chk Chk Boom (Instrumental) .mp3">Chk Chk Boom ⚡</button>
+       <button class="btn song-btn" data-file="Chk Chk Boom (Instrumental) .mp3">Chk Chk Boom ⚡</button>
 <button class="btn song-btn" data-file="Ice On My Teeth (Instrumental) .mp3">Ice On My Teeth ❄️</button>
 <button class="btn song-btn" data-file="REDRED (Instrumental).mp3">REDRED 🔴</button>
       </div>
@@ -1014,6 +1014,14 @@
       "Couldn't play audio. Check file name/location.";
   });
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".song-btn").forEach(function (button) {
+    button.addEventListener("click", function () {
+      playSong(button.dataset.file);
+    });
+  });
+});
 
     function closeSongPopup() {
       document.getElementById("songPopup").classList.remove("active");
