@@ -429,25 +429,26 @@
       document.getElementById("chosenSongText").textContent = selectedSong ? "Selected song: " + selectedSong : "No song selected yet.";
     }
 
-    function playSong(file) {
-      audio.pause();
-      audio = new Audio('./' + encodeURI(file));
-      audio.loop = true;
-      audio.volume = 0.8;
+ function playSong(file) {
+  audio.pause();
+  audio = new Audio(file);   
+  audio.loop = true;
+  audio.volume = 0.8;
 
-      audio.play().then(() => {
-        selectedSong = file;
-        localStorage.setItem("selectedSong", selectedSong);
-        document.getElementById("chosenSongText").textContent = "Now playing: " + file;
-        completeMission("song");
-        burstAtCenter("🎧");
-      }).catch(() => {
-        selectedSong = file;
-        localStorage.setItem("selectedSong", selectedSong);
-        document.getElementById("chosenSongText").textContent = "Selected, but audio did not play. Check the MP3 file name/location.";
-        completeMission("song");
-      });
-    }
+  audio.play().then(() => {
+    selectedSong = file;
+    localStorage.setItem("selectedSong", selectedSong);
+    document.getElementById("chosenSongText").textContent = "Now playing: " + file;
+    completeMission("song");
+    burstAtCenter("🎧");
+  }).catch(() => {
+    selectedSong = file;
+    localStorage.setItem("selectedSong", selectedSong);
+    document.getElementById("chosenSongText").textContent =
+      "Selected, but audio did not play. Check the MP3 file name/location.";
+    completeMission("song");
+  });
+}
 
     function closeSongPopup() {
       document.getElementById("songPopup").classList.remove("active");
