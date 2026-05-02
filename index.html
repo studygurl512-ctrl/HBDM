@@ -878,9 +878,9 @@
       <h2>Choose the Theme Song 🎧</h2>
       <p>Pick the song that matches this birthday universe.</p>
       <div class="btn-row">
-        <button class="btn" onclick="playSong('Chk Chk Boom (Instrumental) .mp3')">Chk Chk Boom ⚡</button>
-        <button class="btn" onclick="playSong('Ice On My Teeth (Instrumental) .mp3')">Ice On My Teeth ❄️</button>
-        <button class="btn" onclick="playSong('REDRED (Instrumental).mp3')">REDRED 🔴</button>
+        <button class="btn song-btn" data-file="Chk Chk Boom (Instrumental) .mp3">Chk Chk Boom ⚡</button>
+<button class="btn song-btn" data-file="Ice On My Teeth (Instrumental) .mp3">Ice On My Teeth ❄️</button>
+<button class="btn song-btn" data-file="REDRED (Instrumental).mp3">REDRED 🔴</button>
       </div>
       <p class="tiny-note" id="chosenSongText">No song selected yet.</p>
       <button class="btn secondary" onclick="closeSongPopup()">Close</button>
@@ -988,25 +988,32 @@
       document.getElementById("chosenSongText").textContent = selectedSong ? "Selected song: " + selectedSong : "No song selected yet.";
     }
 
-    function playSong(file) {
-      audio.pause();
-      audio = new Audio(file);
-      audio.loop = true;
-      audio.volume = 0.8;
+   function playSong(file) {
+  audio.pause();
 
-      audio.play().then(() => {
-        selectedSong = file;
-        localStorage.setItem("selectedSong", selectedSong);
-        document.getElementById("chosenSongText").textContent = "Now playing: " + file;
-        completeMission("song");
-        burstAtCenter("🎧");
-      }).catch(() => {
-        selectedSong = file;
-        localStorage.setItem("selectedSong", selectedSong);
-        document.getElementById("chosenSongText").textContent = "Selected, but audio did not play. Check the MP3 file name/location.";
-        completeMission("song");
-      });
-    }
+  // create new audio
+  audio = new Audio(file);
+  audio.loop = true;
+  audio.volume = 0.8;
+
+  // try to play
+  audio.play().then(() => {
+    selectedSong = file;
+    localStorage.setItem("selectedSong", selectedSong);
+
+    document.getElementById("chosenSongText").textContent =
+      "Now playing: " + file;
+
+    completeMission("song");
+    burstAtCenter("🎧");
+
+  }).catch((err) => {
+    console.error(err);
+
+    document.getElementById("chosenSongText").textContent =
+      "Couldn't play audio. Check file name/location.";
+  });
+}
 
     function closeSongPopup() {
       document.getElementById("songPopup").classList.remove("active");
