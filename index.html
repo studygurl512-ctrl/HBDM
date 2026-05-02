@@ -878,9 +878,11 @@
       <h2>Choose the Theme Song 🎧</h2>
       <p>Pick the song that matches this birthday universe.</p>
       <div class="btn-row">
-       <button class="btn song-btn" data-file="Chk Chk Boom (Instrumental) .mp3">Chk Chk Boom ⚡</button>
-<button class="btn song-btn" data-file="Ice On My Teeth (Instrumental) .mp3">Ice On My Teeth ❄️</button>
-<button class="btn song-btn" data-file="REDRED (Instrumental).mp3">REDRED 🔴</button>
+      <button class="btn" onclick="playSong('Chk Chk Boom (Instrumental) .mp3', 'Chk Chk Boom')">Chk Chk Boom ⚡</button>
+
+<button class="btn" onclick="playSong('Ice On My Teeth (Instrumental) .mp3', 'Ice On My Teeth')">Ice On My Teeth ❄️</button>
+
+<button class="btn" onclick="playSong('REDRED (Instrumental).mp3', 'REDRED')">REDRED 🔴</button>
       </div>
       <p class="tiny-note" id="chosenSongText">No song selected yet.</p>
       <button class="btn secondary" onclick="closeSongPopup()">Close</button>
@@ -988,40 +990,24 @@
       document.getElementById("chosenSongText").textContent = selectedSong ? "Selected song: " + selectedSong : "No song selected yet.";
     }
 
-   function playSong(file) {
+ function playSong(file, title) {
   audio.pause();
-
-  // create new audio
-  audio = new Audio(file);
+  audio.src = file;
   audio.loop = true;
   audio.volume = 0.8;
 
-  // try to play
-  audio.play().then(() => {
-    selectedSong = file;
-    localStorage.setItem("selectedSong", selectedSong);
+  audio.play();
 
-    document.getElementById("chosenSongText").textContent =
-      "Now playing: " + file;
+  selectedSong = file;
+  localStorage.setItem("selectedSong", selectedSong);
 
-    completeMission("song");
-    burstAtCenter("🎧");
+  document.getElementById("chosenSongText").textContent =
+    "Now playing: " + title;
 
-  }).catch((err) => {
-    console.error(err);
-
-    document.getElementById("chosenSongText").textContent =
-      "Couldn't play audio. Check file name/location.";
-  });
+  completeMission("song");
+  burstAtCenter("🎧");
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  document.querySelectorAll(".song-btn").forEach(function (button) {
-    button.addEventListener("click", function () {
-      playSong(button.dataset.file);
-    });
-  });
-});
 
     function closeSongPopup() {
       document.getElementById("songPopup").classList.remove("active");
